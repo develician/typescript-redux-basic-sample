@@ -23,10 +23,26 @@ class ListContainer extends React.Component<ListContainerProps> {
         ListActions.setInput('');
     }
 
+    public handleCheck = (id: number) => {
+        const { ListActions } = this.props;
+        ListActions.check(id);
+    }
+
+    public handleRemove = (id: number) => {
+        const { ListActions } = this.props;
+        ListActions.remove(id);
+    }
+
     public render() {
         const { input, list } = this.props;
         return (
-            <List onChange={this.handleChange} onInsert={this.handleInsert} input={input} list={list} />
+            <List 
+                onChange={this.handleChange} 
+                onInsert={this.handleInsert} 
+                input={input} 
+                list={list} 
+                onCheck={this.handleCheck}
+                onRemove={this.handleRemove} />
         );
     }
 }
